@@ -1,0 +1,40 @@
+app:
+  doc:
+    title: Coffee machine REST API documentation
+    version: '@version@'
+    description: '@description@'
+spring:
+  profiles:
+    active: dev
+  config:
+    import: consumables.yaml
+  jpa:
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8080
+  servlet:
+    context-path: /coffeemachine
+  error:
+    whitelabel:
+      enabled: false
+    include-binding-errors: always
+    include-message: always
+    include-exception: true
+  shutdown: graceful
+---
+# Developer profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+  # Liquibase
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog_master.yaml
+  # PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/control
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: user

@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/v_1.0_create_table_logging_event.yaml
+  - include:
+      file: db/changelog/changeset/v_1.1_create_table_logging_event_property.yaml

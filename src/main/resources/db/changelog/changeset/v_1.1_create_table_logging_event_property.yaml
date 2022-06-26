@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.1.0
+      author: olga
+      changes:
+        - createTable:
+            tableName: logging_event_property
+            columns:
+              - column:
+                  name: event_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mapped_key
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: mapped_value
+                  type: VARCHAR(1024)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+  - changeSet:
+      id: 1.1.1
+      author: olga
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: event_id
+            baseTableName: logging_event_property
+            constraintName: fk_event_id
+            referencedColumnNames: event_id
+            referencedTableName: logging_event

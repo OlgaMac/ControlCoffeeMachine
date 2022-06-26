@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0
+      author: olga
+      changes:
+        - createSequence:
+            dataType:  BIGINT
+            incrementBy:  1
+            sequenceName: logging_event_id_seq
+            startValue:  1
+  - changeSet:
+      id: 1.0.1
+      author: olga
+      changes:
+        - createTable:
+            tableName: logging_event
+            columns:
+              - column:
+                  name: event_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: timestmp
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: formatted_message
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: logger_name
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: level_string
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: thread_name
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: reference_flag
+                  type: SMALLINT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: arg0
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: arg1
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: arg2
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: arg3
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: caller_filename
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: caller_class
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: caller_method
+                  type: VARCHAR(254)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: caller_line
+                  type: CHAR(4)
+                  constraints:
+                    nullable: false
