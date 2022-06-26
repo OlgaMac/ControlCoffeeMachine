@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 @Component
-//@DependsOn({"dataSource"})
 @Slf4j
 @RequiredArgsConstructor
 public class CoffeeMachineEquipment implements Machine {
